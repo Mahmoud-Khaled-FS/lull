@@ -9,7 +9,7 @@ const screen_height = 800
 fn main() {
 	raylibv.init_window(screen_width, screen_height, 'Lull'.str)
 	// screen_width, screen_height := ui.fullscreen()
-	background := ui.get_background('remo.png')
+	background := ui.get_background('remo.i.png')
 
 	for !raylibv.window_should_close() {
 		raylibv.begin_drawing()

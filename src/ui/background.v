@@ -1,7 +1,7 @@
 module ui
 
 import raylibv as rl
-import os
+import services.images
 
 struct Background {
 pub:
@@ -14,16 +14,11 @@ pub:
 
 pub fn get_background(image_path string) Background {
 	// TODO: Move check for background in service module
-	ext := os.file_ext(image_path)
-	if ext != '.png' {
-		os.execute('ffmpeg -i ${image_path} bg.png')
-	} else {
-		os.cp(image_path, 'bg.png') or { panic('ERROR') }
-	}
+	bg_path := images.load_background(image_path)
 	width := rl.get_render_width()
 	height := rl.get_render_height()
-	image := rl.load_image('bg.png'.str)
-	println(image)
+	image := rl.load_image(bg_path.str)
+
 	rl.image_resize(&image, width, height)
 	defer { rl.unload_image(image) }
 	texture := rl.load_texture_from_image(image)
