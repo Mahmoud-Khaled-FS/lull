@@ -63,3 +63,35 @@ pub mut:
 }
 
 pub type Vector3 = C.Vector3
+
+@[typedef]
+struct C.AudioStream {
+	buffer    voidptr
+	// Pointer to internal data used by the audio system
+	processor voidptr
+	// Pointer to internal data processor, useful for audio effects
+	sampleRate u32
+	// Frequency (samples per second)
+	sampleSize u32
+	// Bit depth (bits per sample): 8, 16, 32 (24 not supported)
+	channels   u32
+	// Number of channels (1-mono, 2-stereo, ...)
+}
+
+pub type AudioStream = C.AudioStream
+
+@[typedef]
+struct C.Music {
+	stream     AudioStream
+	// Audio stream
+	frameCount u32
+	// Total number of frames (considering channels)
+	looping    bool
+	// Music looping enable
+	ctxType    int
+	// Type of music context (audio filetype)
+	ctxData    voidptr
+	// Audio context data, depends on type
+}
+
+pub type Music = C.Music

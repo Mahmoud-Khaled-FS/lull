@@ -3,6 +3,7 @@ module raylibv
 #preinclude "@VMODROOT/include/pre.h"
 
 #include "@VMODROOT/raylib-5.0_win64_mingw-w64/include/raylib.h"
+
 // #include "@VMODROOT/raylib/src/raylib.h"
 // #flag -I @VMODROOT/raylib/src/external/glfw/include
 // #flag @VMODROOT/raylib/src/raudio.o
@@ -24,6 +25,12 @@ fn C.InitWindow(width int, height int, title &u8)
 @[inline]
 pub fn init_window(width int, height int, title &u8) {
 	C.InitWindow(width, height, title)
+}
+
+fn C.SetConfigFlags(flags u32)
+@[inline]
+pub fn set_config_flags(flags u32) {
+	C.SetConfigFlags(flags)
 }
 
 fn C.BeginDrawing()
@@ -134,8 +141,9 @@ fn C.ImageResize(image &Image, newWidth int, newHeight int)
 @[inline]
 pub fn image_resize(image &Image, new_width int, new_height int) {
 	C.ImageResize(image, new_height, new_height)
-}                                      // Resize image (Bicubic scaling algorithm)
+}
 
+// Resize image (Bicubic scaling algorithm)
 fn C.LoadTextureFromImage(image Image) Texture2D
 @[inline]
 pub fn load_texture_from_image(image Image) Texture2D {
@@ -171,4 +179,122 @@ fn C.GetRenderHeight() int
 @[inline]
 pub fn get_render_height() int {
 	return C.GetRenderHeight()
+}
+
+fn C.InitAudioDevice()
+@[inline]
+pub fn init_audio_device() {
+	C.InitAudioDevice()
+}
+
+fn C.CloseAudioDevice()
+@[inline]
+pub fn close_audio_device() {
+	C.CloseAudioDevice()
+}
+
+fn C.IsAudioDeviceReady() bool
+@[inline]
+pub fn is_audio_device_ready() bool {
+	return C.IsAudioDeviceReady()
+}
+
+fn C.SetMasterVolume(volume f32)
+pub fn set_master_volume(volume f32) {
+	C.SetMasterVolume(volume)
+}
+
+fn C.GetMasterVolume() f32
+pub fn get_master_volume() f32 {
+	return C.GetMasterVolume()
+}
+
+fn C.LoadMusicStream(fileName &u8) Music
+@[inline]
+pub fn load_music_stream(file_name &u8) Music {
+	return C.LoadMusicStream(file_name)
+}
+
+fn C.IsMusicReady(music Music) bool
+@[inline]
+pub fn is_music_ready(music Music) bool {
+	return C.IsMusicReady(music)
+}
+
+fn C.UnloadMusicStream(music Music)
+@[inline]
+pub fn unload_music_stream(music Music) {
+	C.UnloadMusicStream(music)
+}
+
+fn C.PlayMusicStream(music Music)
+@[inline]
+pub fn play_music_stream(music Music) {
+	C.PlayMusicStream(music)
+}
+
+fn C.IsMusicStreamPlaying(music Music) bool
+@[inline]
+pub fn is_music_stream_playing(music Music) bool {
+	return C.IsMusicStreamPlaying(music)
+}
+
+fn C.UpdateMusicStream(music Music)
+@[inline]
+pub fn update_music_stream(music Music) {
+	C.UpdateMusicStream(music)
+}
+
+fn C.StopMusicStream(music Music)
+@[inline]
+pub fn stop_music_stream(music Music) {
+	C.StopMusicStream(music)
+}
+
+fn C.PauseMusicStream(music Music)
+@[inline]
+pub fn pause_music_stream(music Music) {
+	C.PauseMusicStream(music)
+}
+
+fn C.ResumeMusicStream(music Music)
+@[inline]
+pub fn resume_music_stream(music Music) {
+	C.ResumeMusicStream(music)
+}
+
+fn C.SeekMusicStream(music Music, position f32)
+@[inline]
+pub fn seek_music_stream(music Music, position f32) {
+	C.SeekMusicStream(music, position)
+}
+
+fn C.SetMusicVolume(music Music, volume f32)
+@[inline]
+pub fn set_music_volume(music Music, volume f32) {
+	C.SetMusicVolume(music, volume)
+}
+
+fn C.SetMusicPitch(music Music, pitch f32)
+@[inline]
+pub fn set_music_pitch(music Music, pitch f32) {
+	C.SetMusicPitch(music, pitch)
+}
+
+fn C.SetMusicPan(music Music, pan f32)
+@[inline]
+pub fn set_music_pan(music Music, pan f32) {
+	C.SetMusicPan(music, pan)
+}
+
+fn C.GetMusicTimeLength(music Music) f32
+@[inline]
+pub fn get_music_time_length(music Music) f32 {
+	return C.GetMusicTimeLength(music)
+}
+
+fn C.GetMusicTimePlayed(music Music) f32
+@[inline]
+pub fn get_music_time_played(music Music) f32 {
+	return C.GetMusicTimePlayed(music)
 }

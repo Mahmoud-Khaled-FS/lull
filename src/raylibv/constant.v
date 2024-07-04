@@ -77,3 +77,35 @@ pub enum PixelFormat {
 	compressed_astc_8x8_rgba
 	// 2 bpp
 }
+
+pub const flag_vsync_hint = 0x00000040
+// set to try enabling v-sync on gpu
+pub const flag_fullscreen_mode = 0x00000002
+// set to run program in fullscreen
+pub const flag_window_resizable = 0x00000004
+// set to allow resizable window
+pub const flag_window_undecorated = 0x00000008
+// set to disable window decoration (frame and buttons)
+pub const flag_window_hidden = 0x00000080
+// set to hide window
+pub const flag_window_minimized = 0x00000200
+// set to minimize window (iconify)
+pub const flag_window_maximized = 0x00000400
+// set to maximize window (expanded to monitor)
+pub const flag_window_unfocused = 0x00000800
+// set to window non focused
+pub const flag_window_topmost = 0x00001000
+// set to window always on top
+pub const flag_window_always_run = 0x00000100
+// set to allow windows running while minimized
+pub const flag_window_transparent = 0x00000010
+// set to allow transparent framebuffer
+pub const flag_window_highdpi = 0x00002000
+// set to support high_dpi
+pub const flag_window_mouse_passthrough = 0x00004000
+// set to support mouse passthrough only supported when flag_window_undecorated
+pub const flag_borderless_windowed_mode = 0x00008000
+// set to run program in borderless windowed mode
+pub const flag_msaa_4x_hint = 0x00000020
+// set to try enabling msaa 4x
+pub const flag_interlaced_hint = 0x00010000 // set to try enabling interlaced video format (for v3d)
